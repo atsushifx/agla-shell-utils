@@ -1,4 +1,4 @@
-##
+#!/usr/bin/env bash
 #
 # @(#) : shell script common utilities (function)
 #
@@ -17,8 +17,6 @@
 #
 #<<
 
-
-
 ### utility functions
 
 #
@@ -32,14 +30,13 @@
 ##<<
 _isBinary() {
   local _filetype
-  _filetype=$( file "$1" )
+  _filetype=$(file "$1")
   if [[ "${_filetype}" =~ "text" ]]; then
     echo "text"
   else
     echo "binary"
   fi
 }
-
 
 ### logger
 
@@ -54,10 +51,9 @@ _isBinary() {
 _error() {
   local _date
 
-  _date = $( date+'%Y-%m-%d %H:%M:%S' )
+  _date=$(date+'%Y-%m-%d %H:%M:%S')
   echo "[ $0 $_date ]: $*" >&2
 }
-
 
 ### End of File
 return 0

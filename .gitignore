@@ -37,7 +37,6 @@ pids
 *.pid.lock
 *.lock
 
-
 # Bower dependency directory (https://bower.io/)
 bower_components
 
@@ -60,4 +59,3 @@ web_modules/
 .env.test.local
 .env.production.local
 .env.local
-
