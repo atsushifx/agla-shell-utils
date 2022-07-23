@@ -26,16 +26,12 @@
 set -euC -o pipefail
 readonly THISCMD="$0"
 
-readonly SCRIPTDIR
-readonly WORKINGDIR
-readonly LIBDIR
-
-SCRIPTDIR=$(
+readonly SCRIPTDIR=$(
 	cd "$(dirname "$0")"
 	pwd
 )
-WORKINGDIR="$(pwd)"
-LIBDIR="${SCRIPTDIR}/inc"
+readonly WORKINGDIR="$(pwd)"
+readonly LIBDIR="${SCRIPTDIR}/inc"
 
 # cd "$SCRIPTDIR"
 
@@ -187,4 +183,3 @@ if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
 	fi
 fi
 
-return 0
