@@ -9,7 +9,7 @@
 #
 # @usage <<
 #
-# ,what <file>
+# what <file>
 #  print shell script usage
 #
 # -d    print usage created by header
@@ -103,16 +103,15 @@ header() {
 
 	if [[ "$_type" == "text" ]]; then
 		cat "${_file}" |
-			sed -r '1,/^#[ ]*@(usage|help|desc)/d' |
+			sed -r 1,"/^#[ ]*@(usage|help|desc)/d" |
+      sed -r "/^#[ ]*<</d" |
 			sed -r '/^$/,${ d; }' |
-			tail +2 |
 			sed -e 's/^[#< ]*//' |
 			cat -s
 	else
 		strings "${_file}" |
 			sed -r '1,/^#[ ]*@(usage|help|desc)/d' |
 			sed -r '/^$/,${ d; }' |
-			tail +2 |
 			sed -e 's/^[#< ]*//' |
 			cat -s
 	fi
