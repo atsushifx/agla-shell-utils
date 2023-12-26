@@ -22,6 +22,7 @@
 # THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
 # THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 #
+#<<
 
 ### initialize
 set -euC -o pipefail
@@ -104,7 +105,7 @@ header() {
 
 	if [[ "$_type" == "text" ]]; then
 		cat "${_file}" \
-		| sed -r 1,"/^#[ ]*@(usage|help|desc)/d" \
+		| sed -r 1,"/^#[@ ]*(usage|help|desc)/d" \
 		|	sed -r '/^$/,${ d; }' \
 		| sed -r 's/^[#< ]*//' \
 		| cat -s
