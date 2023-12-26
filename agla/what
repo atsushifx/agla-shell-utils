@@ -7,7 +7,7 @@
 # @date    2022-07-02
 # @license MIT
 #
-# @usage <<
+# @description <<
 #
 # what <file>
 #  print shell script usage
@@ -16,8 +16,9 @@
 # -v    print version
 # -h -? print this usage
 #
-
-##
+#
+###
+#
 # THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
 # THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 #
@@ -102,12 +103,11 @@ header() {
 	_type=$(_isBinary "$_file")
 
 	if [[ "$_type" == "text" ]]; then
-		cat "${_file}" |
-			sed -r 1,"/^#[ ]*@(usage|help|desc)/d" |
-      sed -r "/^#[ ]*<</d" |
-			sed -r '/^$/,${ d; }' |
-			sed -e 's/^[#< ]*//' |
-			cat -s
+		cat "${_file}" \
+		| sed -r 1,"/^#[ ]*@(usage|help|desc)/d" \
+		|	sed -r '/^$/,${ d; }' \
+		| sed -r 's/^[#< ]*//' \
+		| cat -s
 	else
 		strings "${_file}" |
 			sed -r '1,/^#[ ]*@(usage|help|desc)/d' |
