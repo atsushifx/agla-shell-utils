@@ -2,9 +2,9 @@
 #
 # @(#) : display shell script usage
 #
-# @version 0.0.5
+# @version 1.0.0
 # @author  Furukawa, Atsushi <atsushifx@aglabo.com>
-# @date    2022-07-02
+# @date    2023-12-27
 # @license MIT
 #
 # @description <<
@@ -110,7 +110,7 @@ header() {
 		| sed -r 's/^[#< ]*//' \
 		| cat -s
 	else
-		strings "${_file}" |
+		strings -w "${_file}" |
 			sed -r '1,/^#[ ]*@(usage|help|desc)/d' |
 			sed -r '/^$/,${ d; }' |
 			sed -e 's/^[#< ]*//' |
